@@ -44,7 +44,7 @@ Autonomous_Drone_Painter/
         └── launch_with_spawn.sh      # Launch script
 ```
 
-horizontal_paint-VEED.gif
+<video src='horizontal_paint-VEED.gif' width=180/>
 
 ## 📦 Dependencies
 
