@@ -24,12 +24,12 @@ def read_requirements():
 setup(
     name="px4-autonomous-wall-painter",
     version="1.0.0",
-    author="Advanced Autonomous Systems",
+    author="aravindsairam001",
     author_email="",
     description="A comprehensive autonomous drone spray painting system for PX4 Autopilot using MAVSDK Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/your-username/px4-autonomous-wall-painter",
+    url="https://github.com/aravindsairam001/Autonomous_Drone_Painter",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -77,8 +77,8 @@ setup(
     },
     keywords="px4 drone autonomous painting mavsdk gazebo simulation",
     project_urls={
-        "Bug Reports": "https://github.com/your-username/px4-autonomous-wall-painter/issues",
-        "Source": "https://github.com/your-username/px4-autonomous-wall-painter",
+        "Bug Reports": "https://github.com/aravindsairam001/Autonomous_Drone_Painter/issues",
+        "Source": "https://github.com/aravindsairam001/Autonomous_Drone_Painter",
         "Documentation": "https://docs.px4.io/",
         "PX4 Autopilot": "https://github.com/PX4/PX4-Autopilot",
         "MAVSDK Python": "https://github.com/mavlink/MAVSDK-Python",

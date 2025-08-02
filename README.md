@@ -23,6 +23,45 @@ This project provides three main scripts that work together to create a complete
 └─────────────────────┘    └──────────────────────┘    └─────────────────────────┘
 ```
 
+## 📁 Project Structure
+
+```
+Autonomous_Drone_Painter/
+├── interactive_wall_generator.py      # Wall world generation script
+├── update_drone_spawn_pose.py         # Drone positioning calculator
+├── wall_spray_painting_advanced.py    # Main spray painting mission
+├── requirements.txt                   # Core Python dependencies
+├── requirements-dev.txt               # Development dependencies
+├── setup.py                          # Package configuration
+├── install.sh                        # Automated installation script
+├── Makefile                          # Development automation
+├── .gitignore                        # Git exclusions
+├── README.md                         # This documentation
+└── worlds/                           # Generated world files (created by scripts)
+    └── paint_wall/
+        ├── paint_wall.world          # Gazebo world file
+        ├── paint_wall_config.json    # Wall configuration
+        └── launch_with_spawn.sh      # Launch script
+```
+
+## 📦 Dependencies
+
+### Core Requirements
+- **Python 3.7+** - Base language requirement
+- **MAVSDK Python ≥1.4.0** - Main drone communication library
+- **Built-in modules**: asyncio, json, math, xml.etree.ElementTree, os, sys, argparse, datetime
+
+### Optional Dependencies
+- **numpy ≥1.20.0** - For advanced numerical computations
+- **matplotlib ≥3.3.0** - For mission visualization and plotting
+
+### Development Dependencies
+- **pytest ≥6.0.0** - Testing framework
+- **black ≥21.0.0** - Code formatting
+- **flake8 ≥3.9.0** - Code linting
+- **mypy ≥0.910** - Type checking
+- **sphinx ≥4.0.0** - Documentation generation
+
 ## 📋 Prerequisites
 
 ### Required Software
@@ -45,13 +84,27 @@ This project provides three main scripts that work together to create a complete
 
 ## 🚀 Installation
 
-### Step 1: Clone PX4 Autopilot (if not done already)
+### Quick Start (Automated)
+```bash
+# Clone this repository
+git clone https://github.com/aravindsairam001/Autonomous_Drone_Painter.git
+cd Autonomous_Drone_Painter
+
+# Run automated installation
+./install.sh                    # Basic installation
+./install.sh --venv            # Install in virtual environment  
+./install.sh --dev             # Install with development dependencies
+```
+
+### Manual Installation
+
+#### Step 1: Clone PX4 Autopilot (if not done already)
 ```bash
 git clone https://github.com/PX4/PX4-Autopilot.git
 cd PX4-Autopilot
 ```
 
-### Step 2: Install Required Python Dependencies
+#### Step 2: Install Required Python Dependencies
 
 **Option A: Using requirements.txt (Recommended)**
 ```bash
@@ -69,28 +122,34 @@ pip install mavsdk>=1.4.0
 pip install -r requirements-dev.txt
 ```
 
-**Option D: Automated installation**
+**Option D: Install as a package**
 ```bash
-./install.sh                    # Basic installation
-./install.sh --venv            # Install in virtual environment
-./install.sh --dev             # Install with development dependencies
+pip install -e .              # Development mode
+# or
+pip install .                 # Regular installation
 ```
 
-### Step 3: Place Scripts in PX4 Directory
+#### Step 3: Place Scripts in PX4 Directory
 Copy the three provided scripts to the PX4 Tools directory:
 ```bash
 # Place these files in PX4-Autopilot/Tools/
-- interactive_wall_generator.py
-- update_drone_spawn_pose.py  
-- wall_spray_painting_advanced.py
+cp *.py /path/to/PX4-Autopilot/Tools/
 ```
 
-### Step 4: Set Executable Permissions
+#### Step 4: Set Executable Permissions
 ```bash
 cd PX4-Autopilot/Tools
 chmod +x interactive_wall_generator.py
 chmod +x update_drone_spawn_pose.py
 chmod +x wall_spray_painting_advanced.py
+```
+
+### Alternative: Using Makefile
+```bash
+make install                   # Basic installation
+make install-dev              # With development dependencies
+make install-venv             # In virtual environment
+make px4-setup                # Show PX4 setup instructions
 ```
 
 ## 📝 Usage Guide
@@ -179,6 +238,61 @@ python3 wall_spray_painting_advanced.py
    python3 wall_spray_painting_advanced.py
    # Select pattern type (1=Vertical, 2=Horizontal)
    ```
+
+### Alternative: Using Makefile Commands
+```bash
+make run-wall-generator        # Generate custom wall
+make run-spawn-updater         # Calculate drone position  
+make run-painter              # Execute spray painting mission
+make full-workflow            # Complete setup workflow
+```
+
+### Alternative: Using Package Entry Points
+If installed as a package (`pip install -e .`):
+```bash
+wall-generator                # Interactive wall generator
+drone-spawn-updater          # Drone spawn position calculator
+wall-painter                 # Spray painting mission executor
+```
+
+## 🛠️ Development
+
+### Development Setup
+```bash
+# Install with development dependencies
+pip install -r requirements-dev.txt
+
+# Or use Make
+make install-dev
+make dev-setup               # Includes pre-commit hooks
+```
+
+### Code Quality
+```bash
+make format                  # Format code with black
+make lint                    # Run linting with flake8  
+make type-check             # Run type checking with mypy
+make test                   # Run tests with pytest
+make dev-check              # Run all quality checks
+```
+
+### Testing
+```bash
+pytest tests/ -v --cov=. --cov-report=html --cov-report=term
+```
+
+### Virtual Environment
+```bash
+# Create and activate virtual environment
+python3 -m venv px4_painter_env
+source px4_painter_env/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Deactivate when done
+deactivate
+```
 
 ## 🔧 Technical Details
 
@@ -270,6 +384,34 @@ python3 update_drone_spawn_pose.py
 # Check final drone status for confirmation
 ```
 
+**5. Dependencies Installation Issues**
+```bash
+# Make sure you have the right Python version
+python3 --version  # Should be 3.7+
+
+# Use the automated installer
+./install.sh --venv
+
+# Or install step by step
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+**6. Permission Denied on Scripts**
+```bash
+# Make scripts executable
+chmod +x *.py
+chmod +x install.sh
+```
+
+**7. Missing Virtual Environment**
+```bash
+# Create virtual environment
+python3 -m venv px4_painter_env
+source px4_painter_env/bin/activate
+pip install -r requirements.txt
+```
+
 ## 📈 Performance Metrics
 
 - **Coverage Efficiency**: 100% wall surface coverage
@@ -285,6 +427,28 @@ python3 update_drone_spawn_pose.py
 - Weather condition adaptation
 - Real-time paint level monitoring
 
+## 📋 File Descriptions
+
+### Core Scripts
+- **`interactive_wall_generator.py`** - Interactive wall world generator with customizable dimensions
+- **`update_drone_spawn_pose.py`** - Calculates optimal drone spawn positions relative to walls
+- **`wall_spray_painting_advanced.py`** - Main autonomous spray painting mission executor
+
+### Configuration Files
+- **`requirements.txt`** - Core Python dependencies (MAVSDK, numpy, matplotlib)
+- **`requirements-dev.txt`** - Development dependencies (testing, linting, documentation)
+- **`setup.py`** - Python package configuration with entry points
+- **`.gitignore`** - Git version control exclusions
+
+### Automation & Development
+- **`install.sh`** - Automated installation script with virtual environment support
+- **`Makefile`** - Development automation (install, test, format, lint, run tasks)
+
+### Generated Files (Created by Scripts)
+- **`worlds/paint_wall/paint_wall.world`** - Gazebo Classic world file
+- **`worlds/paint_wall/paint_wall_config.json`** - Wall configuration data
+- **`worlds/paint_wall/launch_with_spawn.sh`** - PX4 SITL launch script
+
 ## 📞 Support
 
 For issues related to:
@@ -298,7 +462,8 @@ This project is designed to work with PX4 Autopilot and follows the same BSD 3-C
 
 ---
 
-**Author**: Advanced Autonomous Systems  
+**Author**: aravindsairam001  
+**GitHub**: https://github.com/aravindsairam001/Autonomous_Drone_Painter  
 **Version**: 1.0  
 **Last Updated**: August 2025  
 
