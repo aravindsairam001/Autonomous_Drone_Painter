@@ -44,6 +44,8 @@ Autonomous_Drone_Painter/
         └── launch_with_spawn.sh      # Launch script
 ```
 
+horizontal_paint-VEED.gif
+
 ## 📦 Dependencies
 
 ### Core Requirements
