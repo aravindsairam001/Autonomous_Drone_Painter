@@ -1,0 +1,29 @@
+# PX4 Autonomous Wall Spray Painting System - Requirements
+# Dependencies for running the autonomous drone spray painting simulation
+
+# Core MAVSDK Python library for drone communication
+mavsdk>=1.4.0
+
+# Standard library modules (included with Python 3.7+ but listed for clarity)
+# asyncio - Built-in async/await support (Python 3.7+)
+# json - Built-in JSON handling (Python 3.7+) 
+# math - Built-in mathematical functions (Python 3.7+)
+# xml.etree.ElementTree - Built-in XML parsing (Python 3.7+)
+# os - Built-in operating system interface (Python 3.7+)
+# sys - Built-in system-specific parameters (Python 3.7+)
+# argparse - Built-in command-line argument parsing (Python 3.7+)
+# datetime - Built-in date and time handling (Python 3.7+)
+
+# Optional dependencies for enhanced functionality
+numpy>=1.20.0           # Numerical computations (if needed for advanced waypoint calculations)
+matplotlib>=3.3.0       # Plotting and visualization (for mission planning visualization)
+
+# Development and testing dependencies
+pytest>=6.0.0          # Testing framework
+pytest-asyncio>=0.18.0 # Async testing support
+black>=21.0.0          # Code formatting
+flake8>=3.9.0          # Code linting
+
+# Documentation dependencies
+sphinx>=4.0.0          # Documentation generation
+sphinx-rtd-theme>=0.5.0 # Read the Docs theme for documentation
