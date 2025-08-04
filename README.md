@@ -10,6 +10,11 @@ This project provides three main scripts that work together to create a complete
 2. **`update_drone_spawn_pose.py`** - Calculate optimal drone spawn positions relative to wall
 3. **`wall_spray_painting_advanced.py`** - Execute autonomous spray painting missions with advanced patterns
 
+
+<p align="center">
+  <img src="horizontal_paint-VEED.gif" alt="Input: Painter_Drone" width="60%" />
+</p>
+
 ## 🏗️ System Architecture
 
 ```
@@ -43,9 +48,6 @@ Autonomous_Drone_Painter/
         ├── paint_wall_config.json    # Wall configuration
         └── launch_with_spawn.sh      # Launch script
 ```
-<p align="center">
-  <img src="horizontal_paint-VEED.gif" alt="Input: Concrete Cracking" width="45%" />
-</p>
 
 ## 📦 Dependencies
 
