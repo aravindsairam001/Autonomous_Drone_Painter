@@ -43,7 +43,9 @@ Autonomous_Drone_Painter/
         ├── paint_wall_config.json    # Wall configuration
         └── launch_with_spawn.sh      # Launch script
 ```
-![horizontal_paint-VEED](horizontal_paint-VEED.gif)
+<p align="center">
+  <img src="horizontal_paint-VEED.gif" alt="Input: Concrete Cracking" width="45%" />
+</p>
 
 ## 📦 Dependencies
 
